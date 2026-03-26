@@ -54,7 +54,7 @@ export default function Navbar() {
               <motion.div
                 whileHover={{ rotate: 5, scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative h-8 w-24 md:h-10 md:w-32"
+                className="relative h-10 w-10 md:h-12 md:w-12"
               >
                 <Image
                   src="/images/logo.png"

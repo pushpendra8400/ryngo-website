@@ -61,12 +61,12 @@ export default function Footer() {
           {/* Brand column */}
           <div className="sm:col-span-2 lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-5 group w-fit">
-              <div className="relative h-10 w-32">
+              <div className="relative h-16 w-16">
                 <Image
                   src="/images/logo.png"
                   alt="RynGO Logo"
                   fill
-                  className="object-contain brightness-0 invert"
+                  className="object-contain"
                 />
               </div>
             </Link>

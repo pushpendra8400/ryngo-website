@@ -122,10 +122,10 @@ export default function Footer() {
             <span className="hidden sm:inline"> · </span>
             Mumbai, Maharashtra ·{" "}
             <a
-              href="mailto:support@ryngo.in"
+              href="mailto:admin@ryngo.in"
               className="hover:text-gray-300 transition-colors"
             >
-              support@ryngo.in
+              admin@ryngo.in
             </a>
           </p>
           <div className="flex gap-4 text-gray-500 text-xs font-semibold">

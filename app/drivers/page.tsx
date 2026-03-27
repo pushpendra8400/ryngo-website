@@ -4,7 +4,7 @@ export default function Drivers() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <h1 className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight">
-            Drive with <span className="text-[#ECF4E8]">RynGO</span>
+            Drive with <span className="text-[#ECF4E8]">Ryngo</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed">
             Turn your miles into money. Enjoy flexible hours, competitive earnings, and the support of a premium network.
@@ -16,7 +16,7 @@ export default function Drivers() {
               <p className="text-gray-400 font-medium">Commission for first month</p>
             </div>
             <div className="border border-white/20 rounded-2xl p-6 bg-white/5 backdrop-blur-sm hover-shadow-teal transition-all duration-300">
-              <h3 className="text-3xl font-bold text-white mb-2">₹40k+</h3>
+              <h3 className="text-3xl font-bold text-white mb-2">₹55k+</h3>
               <p className="text-gray-400 font-medium">Avg monthly earnings</p>
             </div>
             <div className="border border-white/20 rounded-2xl p-6 bg-white/5 backdrop-blur-sm hover-shadow-teal transition-all duration-300">

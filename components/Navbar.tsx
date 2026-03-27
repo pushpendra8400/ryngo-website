@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Users", href: "/users" },
+  { name: "Riders", href: "/users" },
   { name: "Drivers", href: "/drivers" },
   { name: "Business", href: "/business" },
   { name: "About", href: "/about" },
@@ -58,7 +58,7 @@ export default function Navbar() {
               >
                 <Image
                   src="/images/logo.png"
-                  alt="RynGO Logo"
+                  alt="Ryngo Logo"
                   fill
                   className="object-contain"
                   priority

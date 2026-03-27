@@ -23,7 +23,7 @@ export default function DriverCTA() {
             <div className="order-1 lg:order-2 w-full lg:w-[48%] min-h-[220px] sm:min-h-[300px] lg:min-h-[520px] relative overflow-hidden">
               <Image
                 src="/images/driverapp.png"
-                alt="RynGO Driver App"
+                alt="Ryngo Driver App"
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -48,7 +48,7 @@ export default function DriverCTA() {
                   <span className="text-[#0A4D9E]">earn more.</span>
                 </h2>
                 <p className="text-gray-700 text-base sm:text-lg mb-7 leading-relaxed opacity-90 max-w-md">
-                  Join the RynGO driver network and take control of your
+                  Join the Ryngo driver network and take control of your
                   schedule. Benefit from our low commission rates, insurance
                   coverage, and 24/7 support.
                 </p>

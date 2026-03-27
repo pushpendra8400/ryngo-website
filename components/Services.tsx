@@ -12,7 +12,7 @@ const services = [
     description: "Affordable rides for daily travel. Budget-friendly, quick pickup, perfect for short trips.",
     icon: "/images/ryngo-mini.png",
     features: ["4 passengers", "Economical pricing"],
-    isPremium: true,
+    isPremium: false,
   },
   {
     id: "taxi",
@@ -28,7 +28,7 @@ const services = [
     description: "Comfort meets affordability. Smooth ride, extra space, ideal for longer trips.",
     icon: "/images/ryngo-sedan.png",
     features: ["Spacious sedans", "AC & comfort"],
-    isPremium: true,
+    isPremium: false,
   },
   {
     id: "electric",
@@ -36,7 +36,7 @@ const services = [
     description: "Eco-friendly rides with our zero-emission electric vehicle fleet.",
     icon: "/images/ryngo-electric.png",
     features: ["Zero emissions", "Silent commute"],
-    isPremium: true,
+    isPremium: false,
   },
   {
     id: "prime",
@@ -52,7 +52,7 @@ const services = [
     description: "Extra-large vehicles for group travel or extra luggage capacity.",
     icon: "/images/ryngo-xl.png",
     features: ["6+ passengers", "Large cargo space"],
-    isPremium: true,
+    isPremium: false,
   },
   {
     id: "auto",

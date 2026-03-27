@@ -4,8 +4,8 @@ import { Youtube, Instagram } from "lucide-react";
 
 const links = {
   Services: [
-    { label: "RynGO Cab", href: "#" },
-    { label: "RynGO Auto", href: "#" },
+    { label: "Ryngo Cab", href: "#" },
+    { label: "Ryngo Auto", href: "#" },
     { label: "Corporate", href: "/business" },
   ],
   Company: [
@@ -64,7 +64,7 @@ export default function Footer() {
               <div className="relative h-16 w-16">
                 <Image
                   src="/images/logo.png"
-                  alt="RynGO Logo"
+                  alt="Ryngo Logo"
                   fill
                   className="object-contain"
                 />

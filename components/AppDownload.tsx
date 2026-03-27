@@ -30,7 +30,7 @@ export default function AppDownload() {
               your pocket.
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-gray-700 font-medium mb-8 leading-snug opacity-90 max-w-md mx-auto lg:mx-0">
-              Download the RynGO app for the fastest booking experience,
+              Download the Ryngo app for the fastest booking experience,
               exclusive promos, and advanced safety features.
             </p>
 
@@ -81,7 +81,7 @@ export default function AppDownload() {
             <div className="relative w-[220px] sm:w-[280px] lg:w-[340px] xl:w-[380px]">
               <Image
                 src="/images/image.png"
-                alt="RynGO Mobile App"
+                alt="Ryngo Mobile App"
                 width={380}
                 height={520}
                 className="w-full h-auto object-cover rounded-[2.5rem] border-4 border-white shadow-2xl"

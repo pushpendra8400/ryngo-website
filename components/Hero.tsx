@@ -51,7 +51,7 @@ export default function Hero() {
               animate="visible"
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-[#0B132B] leading-[1.08] mb-4 md:mb-6"
             >
-              Move with RynGO.<br />
+              Move with Ryngo.<br />
               <span className="text-gradient">Arrive in style.</span>
             </motion.h1>
 
@@ -122,7 +122,7 @@ export default function Hero() {
               <div className="absolute inset-0">
                 <Image
                   src="/images/map.png"
-                  alt="RynGO Map"
+                  alt="Ryngo Map"
                   fill
                   className="object-cover"
                   priority

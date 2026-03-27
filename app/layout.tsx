@@ -7,8 +7,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'RynGO | Premium Ride Booking',
-  description: 'Experience the premium standard of ride booking with RynGO.',
+  title: 'Ryngo | Premium Ride Booking',
+  description: 'Experience the premium standard of ride booking with Ryngo.',
 };
 
 export default function RootLayout({

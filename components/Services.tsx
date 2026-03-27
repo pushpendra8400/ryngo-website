@@ -50,7 +50,7 @@ const services = [
     id: "xl",
     title: "Ryngo Xl",
     description: "Extra-large vehicles for group travel or extra luggage capacity.",
-    icon: "/images/ryngo-mini.png", // Placeholder
+    icon: "/images/ryngo-xl.png",
     features: ["6+ passengers", "Large cargo space"],
     isPremium: false,
   },
@@ -58,7 +58,7 @@ const services = [
     id: "auto",
     title: "Ryngo auto",
     description: "Fast, flexible, and affordable three-wheeler rides for urban traffic.",
-    icon: "/images/auto-icon.png",
+    icon: "/images/ryngo-auto.png",
     features: ["Fast urban travel", "Lowest pricing"],
     isPremium: false,
   },
@@ -66,7 +66,7 @@ const services = [
     id: "autoprime",
     title: "Ryngo auto prime",
     description: "Premium auto experience with enhanced comfort and priority service.",
-    icon: "/images/auto-icon.png", // Placeholder
+    icon: "/images/ryngo-autoprime.png",
     features: ["Premium comfort", "Quickest pickup"],
     isPremium: true,
   },

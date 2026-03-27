@@ -9,34 +9,26 @@ const services = [
   {
     id: "mini",
     title: "Ryngo mini",
-    description: "Budget-friendly everyday rides with top-rated drivers and AC comfort.",
+    description: "Affordable rides for daily travel. Budget-friendly, quick pickup, perfect for short trips.",
     icon: "/images/ryngo-mini.png",
-    features: ["Up to 4 passengers", "Economical pricing"],
-    isPremium: false,
-  },
-  {
-    id: "sedan",
-    title: "Ryngo sedan",
-    description: "Spacious sedans for comfortable city travel and extra luggage space.",
-    icon: "/images/ryngo-sedan.png",
-    features: ["Spacious sedans", "AC & comfort"],
-    isPremium: false,
-  },
-  {
-    id: "prime",
-    title: "Ryngo prime",
-    description: "Premium sedan experience with priority dispatch and top-tier comfort.",
-    icon: "/images/ryngo-prime.png",
-    features: ["Top-tier comfort", "Priority dispatch"],
+    features: ["4 passengers", "Economical pricing"],
     isPremium: true,
   },
   {
     id: "taxi",
     title: "Ryngo taxi",
-    description: "Reliable city taxi service for quick hailing and efficient transit.",
+    description: "Reliable rides anytime, anywhere. Easy availability, comfortable rides, city-wide service.",
     icon: "/images/ryngo-taxi.png",
     features: ["Standard city taxi", "Local expertise"],
     isPremium: false,
+  },
+  {
+    id: "sedan",
+    title: "Ryngo sedan",
+    description: "Comfort meets affordability. Smooth ride, extra space, ideal for longer trips.",
+    icon: "/images/ryngo-sedan.png",
+    features: ["Spacious sedans", "AC & comfort"],
+    isPremium: true,
   },
   {
     id: "electric",
@@ -44,7 +36,15 @@ const services = [
     description: "Eco-friendly rides with our zero-emission electric vehicle fleet.",
     icon: "/images/ryngo-electric.png",
     features: ["Zero emissions", "Silent commute"],
-    isPremium: false,
+    isPremium: true,
+  },
+  {
+    id: "prime",
+    title: "Ryngo prime",
+    description: "Travel cities in style & comfort. Long-distance rides, premium experience, hassle-free travel.",
+    icon: "/images/ryngo-prime.png",
+    features: ["Top-tier comfort", "Priority dispatch"],
+    isPremium: true,
   },
   {
     id: "xl",
@@ -52,7 +52,7 @@ const services = [
     description: "Extra-large vehicles for group travel or extra luggage capacity.",
     icon: "/images/ryngo-xl.png",
     features: ["6+ passengers", "Large cargo space"],
-    isPremium: false,
+    isPremium: true,
   },
   {
     id: "auto",
@@ -65,7 +65,7 @@ const services = [
   {
     id: "autoprime",
     title: "Ryngo auto prime",
-    description: "Premium auto experience with enhanced comfort and priority service.",
+    description: "Auto rides with extra comfort. Better condition vehicles, smoother experience.",
     icon: "/images/ryngo-autoprime.png",
     features: ["Premium comfort", "Quickest pickup"],
     isPremium: true,
@@ -149,7 +149,7 @@ export default function Services() {
                       <div className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full border border-white/30">
                         <Zap size={12} className="text-[#FFF2C6]" />
                         <span className="text-[10px] font-black uppercase tracking-wider text-[#FFF2C6]">
-                          Prime
+                          Premium
                         </span>
                       </div>
                     )}
@@ -172,14 +172,14 @@ export default function Services() {
                     {/* Content */}
                     <div className="flex-1">
                       <h3
-                        className={`text-lg sm:text-xl font-black mb-2 tracking-tight ${
+                        className={`text-lg sm:text-xl font-black mb-1 tracking-tight ${
                           service.isPremium ? "text-white" : "text-[#0B132B]"
                         }`}
                       >
                         {service.title}
                       </h3>
                       <p
-                        className={`text-xs sm:text-sm leading-relaxed mb-5 ${
+                        className={`text-[11px] sm:text-xs leading-relaxed mb-4 min-h-[40px] ${
                           service.isPremium ? "text-white/80" : "text-gray-700"
                         }`}
                       >
@@ -204,7 +204,7 @@ export default function Services() {
                               />
                             </div>
                             <span
-                              className={`text-xs font-bold ${
+                              className={`text-[11px] font-bold ${
                                 service.isPremium ? "text-white/90" : "text-[#0B132B]"
                               }`}
                             >
@@ -217,13 +217,13 @@ export default function Services() {
 
                     {/* CTA button */}
                     <button
-                      className={`w-full min-h-[44px] py-2.5 rounded-xl font-black text-sm transition-all duration-300 active:scale-[0.97] ${
+                      className={`w-full min-h-[40px] py-2 rounded-xl font-black text-xs transition-all duration-300 active:scale-[0.97] ${
                         service.isPremium
                           ? "bg-white text-[#0B4619] hover:bg-[#FFF2C6]"
                           : "bg-[#0B132B] text-white hover:bg-black hover-shadow-teal"
                       }`}
                     >
-                      Book {service.title}
+                      Book {service.title.split(" ").pop()}
                     </button>
                   </motion.div>
                 ))}

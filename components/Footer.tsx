@@ -125,7 +125,7 @@ export default function Footer() {
               href="mailto:admin@ryngo.in"
               className="hover:text-gray-300 transition-colors"
             >
-              admin@ryngo.in
+              support@ryngo.in
             </a>
           </p>
           <div className="flex gap-4 text-gray-500 text-xs font-semibold">

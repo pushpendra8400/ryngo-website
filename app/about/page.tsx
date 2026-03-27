@@ -41,14 +41,14 @@ export default function About() {
             <div className="glass-card p-8 rounded-2xl hover-shadow-teal">
               <h3 className="font-bold text-[#0B132B] mb-2">Support</h3>
               <p className="text-gray-600">
-                admin@ryngo.in<br />
+                support@ryngo.in<br />
                 +91 77188 52504<br />
                 24/7 Availability
               </p>
             </div>
             <div className="glass-card p-8 rounded-2xl hover-shadow-teal">
               <h3 className="font-bold text-[#0B132B] mb-2">Partnerships</h3>
-              <p className="text-gray-600">admin@ryngo.in<br />Join our network</p>
+              <p className="text-gray-600">jet1technology@ryngo.in<br />Join our network</p>
             </div>
           </div>
         </div>

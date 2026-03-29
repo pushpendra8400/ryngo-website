@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
 import {
   User, Shield, CreditCard, Star, Globe, HelpCircle, LogOut,
   ChevronRight, Edit3, Camera, Smartphone, Mail, Lock, Monitor,
@@ -270,7 +270,8 @@ function ContactModal({ onClose, onSave }: { onClose: () => void; onSave: (c: Em
 }
 
 // ─── Main Component ───────────────────────────────────────────────────
-export default function SettingsPage() {
+// ─── Content Component ───────────────────────────────────────────────
+function SettingsContent() {
   const { data: session } = useSession();
   const { theme, setTheme, eyeComfort, setEyeComfort } = useTheme();
   const searchParams = useSearchParams();
@@ -1026,5 +1027,21 @@ export default function SettingsPage() {
         {showContactModal && <ContactModal onClose={() => setShowContactModal(false)} onSave={addContact} />}
       </AnimatePresence>
     </div>
+  );
+}
+
+// ─── Main Page Component (with Suspense) ──────────────────────────────
+export default function SettingsPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-[#ECF4E8] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+          <p className="text-sm font-bold text-emerald-800">Loading settings...</p>
+        </div>
+      </div>
+    }>
+      <SettingsContent />
+    </Suspense>
   );
 }

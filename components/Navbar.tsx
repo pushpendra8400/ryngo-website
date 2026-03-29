@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Navigation, Download } from "lucide-react";
+import { Menu, X, Navigation, Download, LogOut, User, Star, HelpCircle, Wallet, History, Car } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSession, signOut } from "next-auth/react";
+import UserProfile from "./UserProfile";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -19,6 +21,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { data: session } = useSession();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -100,12 +103,18 @@ export default function Navbar() {
 
             {/* Desktop Auth Buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <button className="text-sm font-bold text-gray-700 hover:text-[#0B4619] transition-all hover:scale-105 active:scale-95">
-                Log In
-              </button>
-              <button className="bg-[#0B132B] text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-black transition-all duration-300 hover:-translate-y-0.5 active:scale-95 border border-white/10 hover-shadow-teal">
-                Download App
-              </button>
+              {session?.user ? (
+                <UserProfile user={session.user} />
+              ) : (
+                <>
+                  <Link href="/login" className="text-sm font-bold text-gray-700 hover:text-[#0B4619] transition-all hover:scale-105 active:scale-95">
+                    Sign In
+                  </Link>
+                  <button className="bg-[#0B132B] text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-black transition-all duration-300 hover:-translate-y-0.5 active:scale-95 border border-white/10 hover-shadow-teal">
+                    Download App
+                  </button>
+                </>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -190,13 +199,81 @@ export default function Navbar() {
               transition={{ delay: 0.35, duration: 0.3 }}
               className="px-4 pb-8 space-y-3 safe-bottom"
             >
-              <button className="w-full flex items-center justify-center gap-2 bg-[#0B132B] text-white py-4 rounded-2xl text-base font-black shadow-xl active:scale-[0.97] transition-all hover-shadow-teal">
-                <Download size={18} />
-                Download App
-              </button>
-              <button className="w-full bg-white/70 border border-black/10 text-[#0B132B] py-4 rounded-2xl text-base font-bold active:scale-[0.97] transition-all">
-                Log In
-              </button>
+              {session?.user && (() => {
+                const navUser = session.user;
+                return (
+                  <div className="space-y-4">
+                    <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 border border-white/50 shadow-sm">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="relative w-16 h-16 rounded-full overflow-hidden bg-gray-100 border-2 border-[#4CAF50]/20">
+                          {navUser.image ? (
+                            <Image src={navUser.image} alt={navUser.name || "User"} fill className="object-cover" />
+                          ) : (
+                            <User className="w-full h-full p-4 text-gray-400" />
+                          )}
+                        </div>
+                        <div>
+                          <h3 className="text-xl font-bold text-[#0B132B] leading-tight">
+                            {navUser?.name}
+                          </h3>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-2 mb-6">
+                        {[
+                          { icon: HelpCircle, label: "Help", href: "/settings?section=help" },
+                          { icon: Wallet, label: "Wallet", href: "/settings?section=payments" },
+                          { icon: History, label: "Activity", href: "/settings?section=activity" }
+                        ].map((item) => (
+                          <Link
+                            key={item.label}
+                            href={item.href}
+                            onClick={closeMobileMenu}
+                            className="flex flex-col items-center justify-center gap-2 p-3 bg-gray-50 rounded-2xl active:bg-gray-100 transition-colors"
+                          >
+                            <item.icon size={20} className="text-[#0B132B]" />
+                            <span className="text-[10px] font-bold text-[#0B132B]">{item.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+
+                      <div className="space-y-1">
+                        <Link href="/settings" onClick={closeMobileMenu} className="w-full flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors text-left">
+                          <User size={18} className="text-gray-600" />
+                          <span className="text-sm font-bold text-[#0B132B]">Manage account</span>
+                        </Link>
+                        <button className="w-full flex items-center gap-4 px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors text-left">
+                          <Car size={18} className="text-gray-600" />
+                          <span className="text-sm font-bold text-[#0B132B]">Ride</span>
+                        </button>
+                      </div>
+                    </div>
+                    
+                    <button 
+                      onClick={() => signOut()}
+                      className="w-full bg-white border border-red-100 text-red-500 py-4 rounded-2xl text-base font-bold active:scale-[0.97] transition-all flex items-center justify-center gap-2 shadow-sm"
+                    >
+                      <LogOut size={18} />
+                      Sign Out
+                    </button>
+                  </div>
+                );
+              })()}
+              {!session?.user && (
+                <>
+                  <button className="w-full flex items-center justify-center gap-2 bg-[#0B132B] text-white py-4 rounded-2xl text-base font-black shadow-xl active:scale-[0.97] transition-all hover-shadow-teal">
+                    <Download size={18} />
+                    Download App
+                  </button>
+                  <Link 
+                    href="/login"
+                    onClick={closeMobileMenu}
+                    className="w-full bg-white/70 border border-black/10 text-[#0B132B] py-4 rounded-2xl text-base font-bold active:scale-[0.97] transition-all flex items-center justify-center"
+                  >
+                    Sign In
+                  </Link>
+                </>
+              )}
             </motion.div>
           </motion.div>
         )}

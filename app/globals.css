@@ -14,6 +14,79 @@
   --foreground-rgb: 11, 19, 43;
   --background-start-rgb: 236, 244, 232;
   --background-end-rgb: 236, 244, 232;
+  --card-bg: 255, 255, 255;
+  --nav-bg: rgba(236,244,232,0.8);
+  --border-color: rgba(0,0,0,0.08);
+}
+
+/* ===== DARK MODE VARIABLES ===== */
+html.dark {
+  --foreground-rgb: 230, 240, 230;
+  --background-start-rgb: 10, 14, 10;
+  --background-end-rgb: 10, 14, 10;
+  --card-bg: 20, 26, 20;
+  --nav-bg: rgba(10,14,10,0.85);
+  --border-color: rgba(255,255,255,0.08);
+  color-scheme: dark;
+}
+
+html.dark body {
+  background: rgb(10, 14, 10);
+  color: rgb(230, 240, 230);
+}
+
+html.dark nav {
+  background: rgba(10,14,10,0.85) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+html.dark .bg-white,
+html.dark [class*="bg-white"] {
+  background-color: rgb(20, 28, 20) !important;
+  color: rgb(230, 240, 230) !important;
+}
+
+html.dark [class*="text-gray-600"],
+html.dark [class*="text-gray-500"],
+html.dark [class*="text-gray-400"] {
+  color: rgb(150, 165, 150) !important;
+}
+
+html.dark [class*="border-gray-100"],
+html.dark [class*="border-gray-200"] {
+  border-color: rgba(255,255,255,0.06) !important;
+}
+
+html.dark [class*="bg-gray-50"] {
+  background-color: rgb(28, 35, 28) !important;
+}
+
+html.dark [class*="bg-gray-100"] {
+  background-color: rgb(35, 45, 35) !important;
+}
+
+html.dark [class*="bg-\[#ECF4E8\]"],
+html.dark .min-h-screen {
+  background-color: rgb(10, 14, 10) !important;
+}
+
+/* Eye Comfort Mode - warm orange tint filter */
+html.eye-comfort::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 150, 50, 0.06);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+}
+
+/* scrollbar dark */
+html.dark ::-webkit-scrollbar-track {
+  background: rgb(18, 24, 18);
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #3D8C40;
 }
 
 /* ===== BASE MOBILE-FIRST RESET ===== */

@@ -16,7 +16,7 @@ const links = {
   ],
   Support: [
     { label: "Help Center", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Terms of Service", href: "/terms" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Cookie Settings", href: "#" },
   ],
@@ -128,10 +128,16 @@ export default function Footer() {
               support@ryngo.in
             </a>
           </p>
-          <div className="flex gap-4 text-gray-500 text-xs font-semibold">
+          <div className="flex gap-4 text-gray-500 text-xs font-semibold underline-offset-4">
             <button className="hover:text-white transition-colors uppercase tracking-wide">
               English (IN)
             </button>
+            <Link href="/privacy" className="hover:text-white transition-colors uppercase tracking-wide">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors uppercase tracking-wide">
+              Terms
+            </Link>
             <button className="hover:text-white transition-colors uppercase tracking-wide">
               Help
             </button>

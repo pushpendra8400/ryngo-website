@@ -15,7 +15,7 @@ const links = {
     { label: "Newsroom", href: "#" },
   ],
   Support: [
-    { label: "Help Center", href: "#" },
+    { label: "Help Center", href: "/faq" },
     { label: "Terms of Service", href: "/terms" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Cookie Settings", href: "#" },
@@ -138,9 +138,9 @@ export default function Footer() {
             <Link href="/terms" className="hover:text-white transition-colors uppercase tracking-wide">
               Terms
             </Link>
-            <button className="hover:text-white transition-colors uppercase tracking-wide">
+            <Link href="/faq" className="hover:text-white transition-colors uppercase tracking-wide">
               Help
-            </button>
+            </Link>
           </div>
         </div>
       </div>

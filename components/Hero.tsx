@@ -1,8 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, ArrowRight } from "lucide-react";
-import Image from "next/image";
+import dynamic from "next/dynamic";
+import { useBooking } from "@/context/BookingContext";
+
+// Dynamically import LiveMap with SSR disabled for performance & safety
+const LiveMap = dynamic(() => import("./LiveMap"), { 
+  ssr: false,
+  loading: () => <div className="w-full h-full bg-gray-900 animate-pulse" />
+});
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -14,6 +22,42 @@ const fadeUp = {
 };
 
 export default function Hero() {
+  const { 
+    pickupAddress, setPickupAddress, 
+    destinationAddress, setDestinationAddress,
+    setPickup, setDestination,
+    pickup: pickupCoords,
+    destination: destCoords
+  } = useBooking();
+
+  const [isSearching, setIsSearching] = useState(false);
+
+  const handleRequest = async () => {
+    if (!pickupAddress && !destinationAddress) return;
+    setIsSearching(true);
+    
+    try {
+      const fetchCoords = async (query: string) => {
+        const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`);
+        const data = await res.json();
+        return data.length > 0 ? [parseFloat(data[0].lat), parseFloat(data[0].lon)] as [number, number] : null;
+      };
+
+      const pCoords = pickupAddress ? await fetchCoords(pickupAddress) : null;
+      const dCoords = destinationAddress ? await fetchCoords(destinationAddress) : null;
+
+      if (pCoords) setPickup(pCoords);
+      if (dCoords) setDestination(dCoords);
+      
+      console.log("Geocoding Success:", { pCoords, dCoords });
+    } catch (error) {
+      console.error("Geocoding failed:", error);
+      alert("Location dhoonndhne me thodi dikkat ho rahi hai. Please try again!");
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
   return (
     <section className="relative min-h-[100svh] pt-20 pb-10 md:pt-24 md:pb-16 lg:pt-28 lg:pb-20 overflow-hidden bg-transparent flex items-center">
       {/* Background subtle orbs */}
@@ -66,7 +110,7 @@ export default function Hero() {
               Experience premium ride booking — professional drivers, high-end fleet, and zero-compromise safety at your fingertips.
             </motion.p>
 
-            {/* Search / Pickup Input */}
+            {/* Search / Pickup & Destination Inputs */}
             <motion.div
               custom={3}
               variants={fadeUp}
@@ -74,17 +118,48 @@ export default function Hero() {
               animate="visible"
               className="mb-5"
             >
-              <div className="glass-card p-2 pl-4 rounded-2xl sm:rounded-full flex flex-col sm:flex-row items-stretch sm:items-center gap-2 max-w-xl mx-auto lg:mx-0 hover-shadow-teal">
-                <div className="flex items-center gap-3 flex-1 py-2 px-1 border-b sm:border-b-0 sm:border-r border-white/40">
-                  <MapPin className="text-[#0B132B] shrink-0" size={18} />
+              <div className="glass-card p-3 rounded-2xl md:rounded-[2rem] flex flex-col gap-3 max-w-xl mx-auto lg:mx-0 shadow-lg border border-white/20">
+                
+                {/* Pickup Row */}
+                <div className="flex items-center gap-3 py-2 px-4 bg-white/40 rounded-xl border border-white/40 group hover:border-[#0B4619]/30 transition-all">
+                  <div className="flex flex-col items-center">
+                    <div className="w-2 h-2 rounded-full bg-[#3D8C40] ring-4 ring-[#3D8C40]/20" />
+                    <div className="w-[1px] h-4 bg-gray-300 my-0.5" />
+                  </div>
                   <input
                     type="text"
+                    value={pickupAddress}
+                    onChange={(e) => setPickupAddress(e.target.value)}
                     placeholder="Enter pickup location"
                     className="w-full bg-transparent border-none outline-none text-[#0B132B] placeholder-[#0B132B]/45 font-semibold text-sm"
                   />
                 </div>
-                <button className="flex items-center justify-center gap-2 bg-[#0B132B] text-white px-6 py-3.5 sm:py-3 rounded-xl sm:rounded-full font-bold text-sm hover:bg-black transition-all active:scale-[0.97] min-h-[48px] border border-white/10 hover-shadow-teal whitespace-nowrap">
-                  Request Now <ArrowRight size={16} />
+
+                {/* Destination Row */}
+                <div className="flex items-center gap-3 py-2 px-4 bg-white/40 rounded-xl border border-white/40 group hover:border-[#0B4619]/30 transition-all">
+                  <div className="flex flex-col items-center">
+                    <div className="w-[1px] h-2 bg-gray-300 mb-0.5" />
+                    <div className="w-2.5 h-2.5 bg-[#0B132B] rounded-sm" />
+                  </div>
+                  <input
+                    type="text"
+                    value={destinationAddress}
+                    onChange={(e) => setDestinationAddress(e.target.value)}
+                    placeholder="Where to?"
+                    className="w-full bg-transparent border-none outline-none text-[#0B132B] placeholder-[#0B132B]/45 font-semibold text-sm"
+                  />
+                </div>
+
+                <button 
+                  onClick={handleRequest}
+                  disabled={isSearching}
+                  className="flex items-center justify-center gap-2 bg-[#0B132B] text-white px-6 py-4 rounded-xl font-bold text-sm hover:bg-black transition-all active:scale-[0.97] border border-white/10 hover-shadow-teal w-full disabled:opacity-70"
+                >
+                  {isSearching ? (
+                    <span className="flex items-center gap-2">Searching... <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /></span>
+                  ) : (
+                    <>Request Now <ArrowRight size={16} /></>
+                  )}
                 </button>
               </div>
             </motion.div>
@@ -118,19 +193,10 @@ export default function Hero() {
             <motion.div
               className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-none lg:w-full aspect-[4/5] lg:aspect-[3/4] bg-gradient-to-b from-gray-800 to-[#0B132B] rounded-[2.5rem] overflow-hidden border-2 border-white/70 animate-float shadow-2xl"
             >
-              {/* Map background */}
+              {/* Live Interactive Map */}
               <div className="absolute inset-0">
-                <Image
-                  src="/images/map.png"
-                  alt="Ryngo Map"
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 640px) 340px, (max-width: 1024px) 400px, 50vw"
-                />
+                <LiveMap />
               </div>
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0B132B]/50 via-transparent to-transparent" />
 
               {/* Ride status card (overlaid at bottom) */}
               <div className="absolute bottom-4 left-4 right-4">

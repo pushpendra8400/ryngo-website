@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -344,4 +345,66 @@ body.menu-open {
 ::-webkit-scrollbar-thumb {
   background: #0B4619;
   border-radius: 3px;
+}
+
+/* ===== LEAFLET MAP CUSTOM STYLES ===== */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #f8fafc !important;
+  z-index: 1;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  margin: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+.leaflet-control-zoom-in, .leaflet-control-zoom-out {
+  background: white !important;
+  color: #0B132B !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+  font-size: 16px !important;
+}
+
+.leaflet-bar a:first-child { border-top-left-radius: 10px !important; border-top-right-radius: 10px !important; }
+.leaflet-bar a:last-child { border-bottom-left-radius: 10px !important; border-bottom-right-radius: 10px !important; }
+
+/* Pulsing Home Marker Animation */
+.ryngo-pulse-marker {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  background: #0046FF;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 10px rgba(0, 70, 255, 0.4);
+}
+
+.ryngo-pulse-marker::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  border: 4px solid #0046FF;
+  border-radius: 50%;
+  opacity: 0;
+  animation: markerPulse 2.5s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes markerPulse {
+  0% { transform: scale(0.4); opacity: 0; }
+  50% { opacity: 0.3; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.ryngo-car-marker {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
 }

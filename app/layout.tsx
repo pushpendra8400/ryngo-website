@@ -4,6 +4,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AuthProvider from '@/components/SessionProvider';
 import ThemeProvider from '@/components/ThemeProvider';
+import AIChatBot from '@/components/AIChatBot';
+import { BookingProvider } from '@/context/BookingContext';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -19,15 +21,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans antialiased text-[#0B132B] bg-[#ECF4E8] min-h-screen flex flex-col`}>
         <AuthProvider>
           <ThemeProvider>
-            <Navbar />
-            <main className="flex-grow pt-20">
-              {children}
-            </main>
-            <Footer />
+            <BookingProvider>
+              <Navbar />
+              <main className="flex-grow pt-20">
+                {children}
+              </main>
+              <Footer />
+              <AIChatBot />
+            </BookingProvider>
           </ThemeProvider>
         </AuthProvider>
       </body>

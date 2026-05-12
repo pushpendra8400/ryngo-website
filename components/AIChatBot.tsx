@@ -74,7 +74,7 @@ export default function AIChatBot() {
   // --- VOICE ENGINE ---
   const toggleListening = useCallback(() => {
     if (isListening) { recognitionRef.current?.stop(); setIsListening(false); return; }
-    const win = window as unknown as { SpeechRecognition: typeof window.SpeechRecognition; webkitSpeechRecognition: typeof window.SpeechRecognition };
+    const win = window as any;
     const SpeechRecognition = win.SpeechRecognition || win.webkitSpeechRecognition;
     if (!SpeechRecognition) return;
     try {

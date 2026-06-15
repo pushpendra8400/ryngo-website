@@ -12,7 +12,7 @@ export default function AppDownload() {
       title: "Rider App",
       description: "Download the Ryngo app for the fastest booking experience, exclusive promos, and advanced safety features.",
       playStore: "https://play.google.com/store/apps/details?id=com.ryngo.user",
-      appStore: "https://apps.apple.com/app/ryngo",
+      appStore: "https://apps.apple.com/in/app/ryngo/id6772984650",
       image: "/images/image.png",
       color: "#0B4619"
     },
@@ -20,7 +20,7 @@ export default function AppDownload() {
       title: "Driver App",
       description: "Join the Ryngo driver network and take control of your schedule. Benefit from low commissions and 24/7 support.",
       playStore: "https://play.google.com/store/apps/details?id=com.ryngo.driver",
-      appStore: "https://apps.apple.com/app/ryngo-driver",
+      appStore: "https://apps.apple.com/in/app/ryngo-driver/id6772253351",
       image: "/images/driverapp.png",
       color: "#0A4D9E"
     }
@@ -47,21 +47,19 @@ export default function AppDownload() {
             <div className="inline-flex p-1 bg-white/50 backdrop-blur-md rounded-2xl border border-[#0B4619]/10 mb-8">
               <button
                 onClick={() => setActiveTab("rider")}
-                className={`px-6 py-2.5 rounded-xl text-sm font-black transition-all ${
-                  activeTab === "rider" 
-                    ? "bg-[#0B4619] text-white shadow-lg" 
+                className={`px-6 py-2.5 rounded-xl text-sm font-black transition-all ${activeTab === "rider"
+                    ? "bg-[#0B4619] text-white shadow-lg"
                     : "text-gray-600 hover:text-[#0B4619]"
-                }`}
+                  }`}
               >
                 Rider App
               </button>
               <button
                 onClick={() => setActiveTab("driver")}
-                className={`px-6 py-2.5 rounded-xl text-sm font-black transition-all ${
-                  activeTab === "driver" 
-                    ? "bg-[#0A4D9E] text-white shadow-lg" 
+                className={`px-6 py-2.5 rounded-xl text-sm font-black transition-all ${activeTab === "driver"
+                    ? "bg-[#0A4D9E] text-white shadow-lg"
                     : "text-gray-600 hover:text-[#0A4D9E]"
-                }`}
+                  }`}
               >
                 Driver App
               </button>
@@ -76,8 +74,8 @@ export default function AppDownload() {
                 transition={{ duration: 0.3 }}
               >
                 <span className={`inline-block text-xs font-black uppercase tracking-widest mb-4 px-3 py-1.5 rounded-full border border-opacity-20`}
-                  style={{ 
-                    backgroundColor: `${apps[activeTab].color}15`, 
+                  style={{
+                    backgroundColor: `${apps[activeTab].color}15`,
                     color: apps[activeTab].color,
                     borderColor: apps[activeTab].color
                   }}
@@ -100,11 +98,11 @@ export default function AppDownload() {
                     whileTap={{ scale: 0.96 }}
                     className="flex items-center justify-center transition-all w-full sm:w-auto"
                   >
-                    <Image 
-                      src="/images/app-store-badge.svg" 
-                      alt="Download on the App Store" 
-                      width={160} 
-                      height={48} 
+                    <Image
+                      src="/images/app-store-badge.svg"
+                      alt="Download on the App Store"
+                      width={160}
+                      height={48}
                       className="h-[44px] w-auto object-contain"
                     />
                   </motion.a>
@@ -116,11 +114,11 @@ export default function AppDownload() {
                     whileTap={{ scale: 0.96 }}
                     className="flex items-center justify-center transition-all w-full sm:w-auto"
                   >
-                    <Image 
-                      src="/images/google-play-badge.png" 
-                      alt="Get it on Google Play" 
-                      width={160} 
-                      height={48} 
+                    <Image
+                      src="/images/google-play-badge.png"
+                      alt="Get it on Google Play"
+                      width={160}
+                      height={48}
                       className="h-[64px] w-auto object-contain"
                     />
                   </motion.a>

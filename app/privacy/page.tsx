@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Lock, Eye, FileText, ChevronRight } from "lucide-react";
+import { Shield, Lock, Eye, FileText } from "lucide-react";
 
 export default function PrivacyPage() {
   const sections = [

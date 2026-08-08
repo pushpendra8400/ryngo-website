@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Navigation, Download, LogOut, User, Star, HelpCircle, Wallet, History, Car } from "lucide-react";
+import { Menu, X, Download, LogOut, User, HelpCircle, Wallet, History, Car } from "lucide-react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSession, signOut } from "next-auth/react";

@@ -8,7 +8,6 @@ import {
   Mic, 
   MicOff,
   X, 
-  Sparkles, 
   Volume2, 
   VolumeX, 
   Minimize2
@@ -74,8 +73,9 @@ export default function AIChatBot() {
   // --- VOICE ENGINE ---
   const toggleListening = useCallback(() => {
     if (isListening) { recognitionRef.current?.stop(); setIsListening(false); return; }
-    const win = window as any;
-    const SpeechRecognition = win.SpeechRecognition || win.webkitSpeechRecognition;
+    const win = window as unknown as Record<string, unknown>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SpeechRecognition = (win.SpeechRecognition || win.webkitSpeechRecognition) as new () => any;
     if (!SpeechRecognition) return;
     try {
       const recognition = new SpeechRecognition();
@@ -92,7 +92,7 @@ export default function AIChatBot() {
         if (transcript) setInput((p) => p + (p ? " " : "") + transcript);
       };
       recognition.start();
-    } catch (err) { setIsListening(false); }
+    } catch { setIsListening(false); }
   }, [isListening]);
 
   const handleSpeak = (id: string, text: string) => {

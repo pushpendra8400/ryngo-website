@@ -1,18 +1,10 @@
 import { useEffect, useState, useMemo } from "react";
 import { MapContainer, TileLayer, Marker, Popup, Polyline, Polygon, useMap } from "react-leaflet";
-import { MapPin, Clock, CreditCard, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 import L from "leaflet";
 import { AnimatePresence, motion } from "framer-motion";
 import "leaflet/dist/leaflet.css";
 import { useBooking } from "@/context/BookingContext";
-
-// Fix for default marker icons in Leaflet with Next.js
-const DefaultIcon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
 
 // Custom Pulsing Div Icon for the User
 const createPulseIcon = () => L.divIcon({

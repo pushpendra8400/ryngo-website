@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { MapPin, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -27,8 +27,6 @@ export default function Hero() {
     pickupAddress, setPickupAddress,
     destinationAddress, setDestinationAddress,
     setPickup, setDestination,
-    pickup: pickupCoords,
-    destination: destCoords
   } = useBooking();
 
   const [isSearching, setIsSearching] = useState(false);

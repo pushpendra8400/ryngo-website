@@ -17,7 +17,6 @@ import {
   Scale, 
   Globe, 
   Mail,
-  ChevronRight,
   ArrowUp
 } from "lucide-react";
 

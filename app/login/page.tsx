@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { LogIn, Mail, Lock, Chrome, ArrowRight, Loader2, AlertCircle, Eye, EyeOff } from "lucide-react";
 
 export default function LoginPage() {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");

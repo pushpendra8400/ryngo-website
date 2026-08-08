@@ -5,13 +5,13 @@ import {
   User, Shield, CreditCard, Star, Globe, HelpCircle, LogOut,
   ChevronRight, Edit3, Camera, Smartphone, Mail, Lock, Monitor,
   Sun, Moon, MessageSquare, Phone, FileText, MapPin, Plus,
-  Car, AlertCircle, Eye, X, Check, ChevronDown, History as RideHistory
+  AlertCircle, Eye, X, Check, History as RideHistory
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/react";
 import { useTheme } from "@/components/ThemeProvider";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 // ─── Types ───────────────────────────────────────────────────────────
 type ModalField = { label: string; key: string; type?: string; value: string } | null;
@@ -275,7 +275,6 @@ function SettingsContent() {
   const { data: session } = useSession();
   const { theme, setTheme, eyeComfort, setEyeComfort } = useTheme();
   const searchParams = useSearchParams();
-  const router = useRouter();
   const sectionParam = searchParams.get("section");
   const [active, setActive] = useState(sectionParam || "profile");
 

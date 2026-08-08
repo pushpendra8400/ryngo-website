@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   User, HelpCircle, Wallet, History, Settings, 
-  LogOut, Star, Car, ChevronRight
+  LogOut, Car, ChevronRight
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

@@ -135,7 +135,7 @@ export default function Services() {
                 transition={{ duration: 0.3 }}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
               >
-                {carouselData[currentSlide].map((service, index) => (
+                {carouselData[currentSlide].map((service) => (
                   <motion.div
                     key={service.id}
                     className={`relative flex flex-col h-full rounded-[1.75rem] overflow-hidden border-2 transition-all duration-300 ${

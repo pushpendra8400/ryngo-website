@@ -61,7 +61,7 @@ export function BookingProvider({ children }: { children: ReactNode }) {
         } else {
           setWeather("Clear ☀️ 28°C"); // Fallback if API fails
         }
-      } catch (err) {
+      } catch {
         setWeather("Clear ☀️ 28°C"); // Fallback on error
       }
     };

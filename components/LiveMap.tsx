@@ -156,12 +156,12 @@ export default function LiveMap() {
     setDistance
   } = useBooking();
 
-  const [center] = useState<[number, number]>([19.0068, 73.1098]);
+  const [center] = useState<[number, number]>([19.0760, 72.8777]);
   const [cars, setCars] = useState([
-    { id: 1, type: 'mini', pos: [19.0150, 73.0950] as [number, number] },
-    { id: 2, type: 'sedan', pos: [19.0080, 73.1020] as [number, number] },
-    { id: 3, type: 'mini', pos: [18.9980, 73.1150] as [number, number] },
-    { id: 4, type: 'xl', pos: [19.0200, 73.0880] as [number, number] },
+    { id: 1, type: 'mini', pos: [19.0780, 72.8800] as [number, number] },
+    { id: 2, type: 'sedan', pos: [19.0740, 72.8750] as [number, number] },
+    { id: 3, type: 'mini', pos: [19.0800, 72.8720] as [number, number] },
+    { id: 4, type: 'xl', pos: [19.0720, 72.8850] as [number, number] },
   ]);
 
   // Derive short readable labels for markers
@@ -198,10 +198,10 @@ export default function LiveMap() {
 
   // Surge Zone Area (Transparent red polygon)
   const surgeZone: [number, number][] = [
-    [19.0120, 73.0920],
-    [19.0180, 73.1000],
-    [19.0140, 73.1080],
-    [19.0060, 73.0980],
+    [19.0770, 72.8760],
+    [19.0785, 72.8780],
+    [19.0765, 72.8795],
+    [19.0750, 72.8770],
   ];
 
   // Dynamic Route Path & Distance Calculation Using Road Routing Engines

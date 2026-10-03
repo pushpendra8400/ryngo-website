@@ -31,10 +31,10 @@ interface BookingContextType {
 const BookingContext = createContext<BookingContextType | undefined>(undefined);
 
 export function BookingProvider({ children }: { children: ReactNode }) {
-  const [pickup, setPickup] = useState<[number, number] | null>([19.0222, 73.0898]);
-  const [destination, setDestination] = useState<[number, number] | null>([18.9894, 73.1203]);
-  const [pickupAddress, setPickupAddress] = useState("Kamothe");
-  const [destinationAddress, setDestinationAddress] = useState("Panvel");
+  const [pickup, setPickup] = useState<[number, number] | null>(null);
+  const [destination, setDestination] = useState<[number, number] | null>(null);
+  const [pickupAddress, setPickupAddress] = useState("");
+  const [destinationAddress, setDestinationAddress] = useState("");
   const [weather, setWeather] = useState<string | null>(null);
   const [availableCars, setAvailableCars] = useState<Car[]>([]);
   const [isSurge, setIsSurge] = useState(false);

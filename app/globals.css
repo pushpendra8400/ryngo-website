@@ -408,3 +408,10 @@ body.menu-open {
   transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
 }
+
+.ryngo-pickup-marker,
+.ryngo-dest-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
